@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useEffect,useState} from 'react';
+import { SearchBar } from './components/searchBar';
+import { ImageList } from './components/imageList';
 
 function App() {
+  const [result, setResult]=useState([]);
+  useEffect(()=>{
+    if (result.length > 0) {
+     console.log("@@result",result)
+    }
+  },[result])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchBar setResult={setResult} />
+      <ImageList result={result?.items || []} className='picture' />
     </div>
   );
 }
