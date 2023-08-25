@@ -1,4 +1,4 @@
-import { React, Fragment, useEffect, useState} from "react";
+import { React, Fragment, useEffect, useState, useRef} from "react";
 import fetchJsonp from "fetch-jsonp";
 
 const callFlicker = async (tagsQuery) => {
@@ -17,24 +17,22 @@ const callFlicker = async (tagsQuery) => {
 
 export function DebounceSearch({ setResult }) {
   const [input, setInput] = useState("");
-  const [timer, setTimer] = useState(undefined);
   const [queryText, setQueryText] = useState(input);
   const onInputChange = (event) => {
     setInput(event.target.value);
   };
   //setResult=useEffect(callFlicker(input),[input])
+  const timer = useRef(undefined);
   useEffect(() => {
-    if (timer) clearTimeout(timer);
-    setTimer(
-      setTimeout(() => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
         if (input !== queryText) {
-          console.log({ input, queryText });
-          setQueryText(input);
-          callFlicker(input).then(setResult);
+            console.log({ input, queryText });
+            setQueryText(input);
+            callFlicker(input).then(setResult);
         }
-      }, 1000)
-    );
-  }, [input]);
+    }, 1000)
+  }, [input, queryText, setResult]);
 
   return (
     <Fragment>
