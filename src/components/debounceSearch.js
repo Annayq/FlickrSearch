@@ -1,6 +1,5 @@
-import { React, Fragment, useEffect, useState,useMemo } from "react";
+import { React, Fragment, useEffect, useState} from "react";
 import fetchJsonp from "fetch-jsonp";
-import { debounce } from "lodash";
 
 const callFlicker = async (tagsQuery) => {
   try {
