@@ -1,4 +1,4 @@
-import {Fragment, React, useState,useEffect} from 'react';
+import {Fragment, React, useState} from 'react';
 import fetchJsonp from "fetch-jsonp";
 
 

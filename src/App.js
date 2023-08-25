@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import { SearchBar } from './components/searchBar';
+// import { SearchBar } from './components/searchBar';
 import { ImageList } from './components/imageList';
 import { DebounceSearch } from './components/debounceSearch';
 import './App.css';
