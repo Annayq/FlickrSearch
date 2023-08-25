@@ -1,11 +1,12 @@
 import React from 'react';
+import '.././App.css'
 
 
 export function ImageList({result}){
  return(
-    <div>
+    <div className='picture'>
         {result.map((item,index)=>(
-            <img src={item.media.m} key={index}/>
+            <img src={item.media.m} key={index} className='image' />
         ))}
     </div>
  )
