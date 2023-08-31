@@ -1,4 +1,4 @@
-.picture {
+/* .picture {
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
@@ -9,9 +9,38 @@
 }
 
 .image {
-  flex: 0 1 calc(25% - 10px); /* Four columns with a little spacing */
+  flex: 0 1 calc(25% - 10px);
   margin-bottom: 20px;
   overflow: hidden;
   box-sizing: border-box;
+} */
+
+/* #container {
+  height: 100%;
+  max-height: 800px;
+  margin: 5px auto;
+} */
+
+.masonry{
+  column-width: 250px;
+  column-gap: 10px;
 }
 
+.item{
+  width: 100%;
+}
+
+img{
+  width: 100%;
+  padding: 3px;
+  animation: slideIn 1.5s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(500px) scale(.2);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+ }
