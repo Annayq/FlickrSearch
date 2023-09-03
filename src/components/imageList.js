@@ -8,7 +8,7 @@ export function ImageList({ result }) {
         {result.map((item, index) => (
           <img
             src={item.media.m}
-            key={index}
+            key={Math.random(index)}
             alt={item.tags}
           />
         ))}
