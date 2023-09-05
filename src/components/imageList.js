@@ -6,10 +6,15 @@ export function ImageList({ result }) {
     <div id="container" className="masonry">
       <div className="item">
         {result.map((item, index) => (
+          //   <img
+          //     src={item.media.m}
+          //     key={Math.random(index)}
+          //     alt={item.tags}
+          //   />
           <img
-            src={item.media.m}
+            src={item.url}
             key={Math.random(index)}
-            alt={item.tags}
+            alt={item.alt}
           />
         ))}
       </div>

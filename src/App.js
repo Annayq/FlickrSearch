@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       {/* <SearchBar setResult={setResult} /> */}
       <DebounceSearch setResult={setResult} />
-      <ImageList result={result?.items || []} />
+      <ImageList result={result|| []} />
     </div>
   );
 }
