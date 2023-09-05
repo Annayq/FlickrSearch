@@ -19,7 +19,7 @@ export function DebounceSearch({ setResult }) {
     timer.current = setTimeout(() => {
       if (
         searchInput !== queryParams.searchInput ||
-        source != queryParams.source
+        source !== queryParams.source
       ) {
         console.log({ searchInput, source, queryParams });
         setQueryParams({ searchInput, source });
