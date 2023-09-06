@@ -1,16 +1,8 @@
 import { React, Fragment, useEffect, useState, useRef } from "react";
-import { Unsplash } from "../services/unsplash";
-import { Flickr } from "../services/flickr";
 
-const imageSearchOptions = {
-  flickr: Flickr,
-  unsplash: Unsplash,
-};
-
-export function DebounceSearch({ setResult }) {
+export function DebounceSearch({ setResult, setLoading, source }) {
   const [searchInput, setSearchInput] = useState("");
-  const [source, setSource] = useState("flickr");
-  const [queryParams, setQueryParams] = useState({ searchInput, source });
+  const [queryParams, setQueryParams] = useState({ searchInput, sourceName: source.sourceName });
 
   const timer = useRef(undefined);
 
@@ -19,12 +11,12 @@ export function DebounceSearch({ setResult }) {
     timer.current = setTimeout(() => {
       if (
         searchInput !== queryParams.searchInput ||
-        source !== queryParams.source
+        source.sourceName !== queryParams.sourceName
       ) {
-        console.log({ searchInput, source, queryParams });
-        setQueryParams({ searchInput, source });
-        const searchFunction = imageSearchOptions[source];
-        searchFunction(searchInput).then(setResult);
+        setLoading(true)
+        console.log("searching", { searchInput, source, queryParams });
+        setQueryParams({ searchInput, sourceName: source.sourceName });
+        source.searchFunction(searchInput).then(setResult).then(()=>setLoading(false));
       }
     }, 1000);
   }, [searchInput, queryParams, setResult, source]);
@@ -38,14 +30,6 @@ export function DebounceSearch({ setResult }) {
           placeholder="Search your photo"
           onChange={(event) => setSearchInput(event.target.value)}
         />
-        <select
-          name="select your source"
-          defaultValue="flickr"
-          onChange={(event) => setSource(event.target.value)}
-        >
-          <option value="flickr">Flickr</option>
-          <option value="unsplash">Unsplash</option>
-        </select>
       </div>
     </Fragment>
   );
