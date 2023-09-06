@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { SearchBar } from './components/searchBar';
 import { ImageList } from "./components/imageList";
 import { DebounceSearch } from "./components/debounceSearch";
@@ -14,6 +14,7 @@ function App() {
       console.log("@@result", result);
     }
   }, [result]);
+
 
   return (
     <div className="App">

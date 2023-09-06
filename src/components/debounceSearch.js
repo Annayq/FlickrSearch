@@ -19,7 +19,7 @@ export function DebounceSearch({ setResult, setLoading, source }) {
         source.searchFunction(searchInput).then(setResult).then(()=>setLoading(false));
       }
     }, 1000);
-  }, [searchInput, queryParams, setResult, source]);
+  }, [searchInput, queryParams, setResult, source,setLoading]);
 
   return (
     <Fragment>
